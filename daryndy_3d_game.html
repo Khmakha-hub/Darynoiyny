@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#8ed8ff">
+<title>Қош келдің, менің дарынды оқушым!</title>
+<style>
+:root{--ink:#24415d;--blue:#4c9ee8;--pink:#ff8fb1;--yellow:#ffd76a;--green:#68c98a}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Trebuchet MS",system-ui,sans-serif;color:var(--ink);background:#c7edff;min-height:100vh;overflow-x:hidden}
+.page{max-width:1100px;margin:auto;padding:20px 16px 34px}
+header{text-align:center;position:relative;z-index:2}
+h1{font-size:clamp(1.65rem,4.5vw,3rem);line-height:1.08;margin:8px 0;color:#204c75;text-shadow:0 3px #fff}
+.subtitle{font-size:1rem;margin:10px auto 18px;max-width:650px}
+.scene{height:300px;position:relative;overflow:hidden;border-radius:28px;background:linear-gradient(#7fd2ff 0%,#d5f5ff 72%,#a5e6a1 72%,#6dc77c 100%);box-shadow:0 12px 0 #78b9d6,0 18px 35px #2d759b35}
+.sun{position:absolute;width:72px;height:72px;border-radius:50%;background:#ffe77c;right:10%;top:22px;box-shadow:0 0 0 12px #ffe77c45,0 0 36px #fff3ad}
+.cloud{position:absolute;width:100px;height:30px;background:#fff;border-radius:30px;top:48px;left:12%;filter:drop-shadow(0 4px #d3f1ff)}
+.cloud:before,.cloud:after{content:"";position:absolute;background:#fff;border-radius:50%}.cloud:before{width:42px;height:42px;left:15px;top:-20px}.cloud:after{width:52px;height:52px;right:14px;top:-27px}
+.cloud.c2{left:58%;top:95px;transform:scale(.7)}
+.school{position:absolute;right:8%;bottom:67px;width:180px;height:108px;background:#ffd36c;border:4px solid #b87d48;border-radius:8px 8px 3px 3px;box-shadow:inset 0 -12px #f5b957}
+.school:before{content:"";position:absolute;left:-15px;top:-42px;width:0;height:0;border-left:101px solid transparent;border-right:101px solid transparent;border-bottom:48px solid #ed7770}
+.school:after{content:"МЕКТЕП";position:absolute;top:12px;left:0;right:0;text-align:center;font-weight:900;font-size:15px;color:#7d4c36}
+.window{position:absolute;width:27px;height:30px;background:#9de4ff;border:3px solid #fff;top:44px;left:22px;box-shadow:76px 0 #9de4ff,76px 0 0 3px #fff}
+.door{position:absolute;bottom:0;left:72px;width:34px;height:49px;background:#b47b52;border:3px solid #fff;border-bottom:0;border-radius:8px 8px 0 0}
+.path{position:absolute;bottom:-24px;left:4%;width:62%;height:112px;background:#e9d7b1;transform:perspective(140px) rotateX(16deg);border-radius:50% 50% 0 0;border:5px solid #d5bd91}
+.path:after{content:"";position:absolute;left:50%;top:5px;bottom:0;border-left:5px dashed #fff5d6}
+.tree{position:absolute;bottom:62px;left:7%;width:20px;height:58px;background:#a96c47;border-radius:8px}
+.tree:before{content:"";position:absolute;width:70px;height:75px;left:-25px;top:-53px;background:#47b96c;border-radius:48% 52% 45% 55%;box-shadow:18px 15px 0 #60cb7c,-10px 17px 0 #39a85c}
+.tree.t2{left:38%;transform:scale(.7);bottom:74px}
+.student{position:absolute;z-index:2;left:26%;bottom:63px;width:62px;height:115px;animation:bob 2s ease-in-out infinite;filter:drop-shadow(0 7px 2px #387e6a30)}
+.head{position:absolute;left:16px;top:0;width:35px;height:38px;border-radius:45% 45% 48% 48%;background:#f2bd8c;border:2px solid #8d5e43}
+.hair{position:absolute;left:14px;top:-4px;width:39px;height:20px;border-radius:50% 50% 25% 25%;background:#5b392e;z-index:2}
+.eye{position:absolute;top:16px;left:24px;width:4px;height:5px;border-radius:50%;background:#263b4b;z-index:3;box-shadow:14px 0 #263b4b}
+.smile{position:absolute;left:26px;top:25px;width:12px;height:6px;border-bottom:2px solid #a94f53;border-radius:50%;z-index:3}
+.body3d{position:absolute;left:10px;top:37px;width:46px;height:48px;background:#4e92d6;border:3px solid #fff;border-radius:13px 13px 7px 7px;box-shadow:inset -7px 0 #3476b5}
+.collar{position:absolute;left:27px;top:39px;width:13px;height:16px;background:#fff;clip-path:polygon(0 0,100% 0,50% 100%)}
+.bag{position:absolute;left:0;top:45px;width:17px;height:37px;background:#ffb14f;border:3px solid #fff;border-radius:8px;box-shadow:inset -4px 0 #ed8e39}
+.arm{position:absolute;top:45px;left:4px;width:12px;height:37px;background:#f2bd8c;border-radius:10px;transform:rotate(20deg);transform-origin:top}
+.arm.right{left:48px;transform:rotate(-20deg)}
+.leg{position:absolute;top:79px;left:18px;width:13px;height:28px;background:#385a8b;border-radius:8px;transform:rotate(7deg);transform-origin:top}
+.leg.right{left:38px;transform:rotate(-8deg)}
+.shoe{position:absolute;top:100px;left:12px;width:23px;height:10px;background:#ff7f8c;border-radius:9px 3px 7px 7px}
+.shoe.right{left:35px;background:#fff}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+.hint{position:relative;z-index:3;margin:-1px auto 16px;padding:12px 14px;border-radius:16px;background:#fffdf1;box-shadow:0 5px 0 #e7d9a6;font-weight:700;text-align:center}
+.cells-title{text-align:center;font-size:1.35rem;margin:22px 0 12px}
+.tiles{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.tile{border:0;min-height:105px;border-radius:20px;cursor:pointer;color:#21486d;font:inherit;font-weight:900;background:linear-gradient(145deg,#fff,#e5f5ff);box-shadow:0 7px 0 #a4c9e1,0 10px 18px #376d8d22;transition:transform .16s,box-shadow .16s;position:relative;overflow:hidden}
+.tile:nth-child(3n+2){background:linear-gradient(145deg,#fff,#ffe5ef);box-shadow:0 7px 0 #e6b2c5,0 10px 18px #376d8d22}
+.tile:nth-child(3n){background:linear-gradient(145deg,#fff,#fff1bf);box-shadow:0 7px 0 #e5cc7a,0 10px 18px #376d8d22}
+.tile:hover{transform:translateY(-4px) rotate(-1deg)}
+.tile:active{transform:translateY(3px);box-shadow:0 3px 0 #a4c9e1}
+.tile .num{display:block;font-size:1.8rem;line-height:1.1}
+.tile .label{display:block;font-size:.83rem;margin-top:7px}
+.tile.opened{outline:3px solid #58b7e7;outline-offset:-5px}
+.tile.opened:after{content:"✓";position:absolute;right:10px;top:7px;color:#36a86c;font-size:1.15rem}
+footer{text-align:center;margin-top:24px;font-size:.9rem;color:#35617d}
+.overlay{display:none;position:fixed;inset:0;z-index:10;background:#173e5bc9;backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px}
+.overlay.show{display:flex}
+.modal{width:min(480px,100%);position:relative;text-align:center;background:linear-gradient(145deg,#fff,#f0faff);border:5px solid #fff;border-radius:28px;padding:32px 24px 26px;box-shadow:0 20px 70px #08263d66;animation:pop .22s ease-out}
+@keyframes pop{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+.modal .star{font-size:3.5rem;line-height:1.2}
+.modal h2{margin:10px 0;color:#2e78ad;font-size:1.5rem}
+.modal p{font-size:1.25rem;font-weight:800;line-height:1.45;margin:12px 0 22px}
+.close{position:absolute;right:12px;top:10px;border:0;border-radius:50%;width:38px;height:38px;background:#ffe1e9;color:#9c3554;font-size:1.6rem;font-weight:900;cursor:pointer}
+.modal-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.action{border:0;border-radius:13px;padding:12px 18px;font-weight:900;font-size:1rem;cursor:pointer;background:#4e9fe2;color:#fff;box-shadow:0 4px 0 #3276b0}
+.action.secondary{background:#ff9db8;box-shadow:0 4px 0 #d66d8d}
+@media(max-width:650px){.page{padding:14px 12px 26px}.scene{height:250px}.school{transform:scale(.78);transform-origin:bottom right;right:4%;bottom:57px}.student{left:24%;transform:scale(.88);transform-origin:bottom center}.path{width:77%;left:-5%}.tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tile{min-height:95px}.tile .num{font-size:1.65rem}.tree.t2{left:48%}.subtitle{font-size:.95rem}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+  <h1>Қош келдің, менің<br>дарынды оқушым! 🌟</h1>
+  <p class="subtitle">Кішкентай саяхатшы мектепке бара жатыр. Жол бойындағы ұяшықтарды басып, жақсы тілектерді аш!</p>
+</header>
+<section class="scene" aria-label="Мектепке бара жатқан оқушы бейнеленген ойын көрінісі">
+  <div class="sun"></div><div class="cloud"></div><div class="cloud c2"></div>
+  <div class="tree"></div><div class="tree t2"></div>
+  <div class="path"></div>
+  <div class="school"><div class="window"></div><div class="door"></div></div>
+  <div class="student" aria-label="Оқушының 3D стиліндегі бейнесі">
+    <div class="hair"></div><div class="head"></div><div class="eye"></div><div class="smile"></div>
+    <div class="body3d"></div><div class="collar"></div><div class="bag"></div>
+    <div class="arm"></div><div class="arm right"></div><div class="leg"></div><div class="leg right"></div><div class="shoe"></div><div class="shoe right"></div>
+  </div>
+</section>
+<div class="hint">👆 Кез келген ұяшықты аш. Қайта бассаң немесе ✕ батырмасын бассаң — жабылады.</div>
+<h2 class="cells-title">🎒 Сиқырлы жолдағы 10 ұяшық</h2>
+<div class="tiles" id="tiles">
+<button class="tile" data-index="0"><span class="num">1</span><span class="label">Жұлдызды тілек</span></button>
+<button class="tile" data-index="1"><span class="num">2</span><span class="label">Ерекше оқушы</span></button>
+<button class="tile" data-index="2"><span class="num">3</span><span class="label">Өзіңе сен</span></button>
+<button class="tile" data-index="3"><span class="num">4</span><span class="label">Қателіктен үйрен</span></button>
+<button class="tile" data-index="4"><span class="num">5</span><span class="label">Алға қадам</span></button>
+<button class="tile" data-index="5"><span class="num">6</span><span class="label">Күн шуағы</span></button>
+<button class="tile" data-index="6"><span class="num">7</span><span class="label">Арманда!</span></button>
+<button class="tile" data-index="7"><span class="num">8</span><span class="label">Жаңа мүмкіндік</span></button>
+<button class="tile" data-index="8"><span class="num">9</span><span class="label">Жеңіске жет</span></button>
+<button class="tile" data-index="9"><span class="num">10</span><span class="label">Үлкен жетістік</span></button>
+</div>
+<footer>💙 Сенің әр қадамың маңызды. Алға, дарынды оқушым!</footer>
+</div>
+<div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <button class="close" id="closeX" aria-label="Жабу">×</button>
+    <div class="star" id="modalEmoji">🌟</div>
+    <h2 id="modalTitle">Саған арналған тілек</h2>
+    <p id="modalMessage"></p>
+    <div class="modal-actions">
+      <button class="action secondary" id="closeBtn">✕ Жабу</button>
+      <button class="action" id="reopenBtn">↻ Осы ұяшықты қайта ашу</button>
+    </div>
+  </div>
+</div>
+<script>
+const messages = [
+  ["🌟","Сенің қолыңнан бәрі келеді!"],
+  ["⭐","Сен — ерекше әрі дарынды баласың!"],
+  ["💫","Өзіңе сен! Сен ойлағаннан да мықтысың!"],
+  ["🦋","Қателесуден қорықпа — әр қателік сені үйретеді!"],
+  ["🚀","Бүгін кешегіден де жақсы болуға тырыс!"],
+  ["☀️","Сенің күлкің — бүгінгі күннің шуағы!"],
+  ["💖","Арманда! Үйрен! Ізден! Биіктерді бағындыр!"],
+  ["🌈","Әрбір жаңа күн — жаңа мүмкіндіктерге толы!"],
+  ["🏆","Ең бастысы — берілме! Сен міндетті түрде жетістікке жетесің!"],
+  ["🌷","Сенің кішкентай қадамың — үлкен жеңістердің бастауы!"]
+];
+const overlay=document.getElementById('overlay');
+const tiles=[...document.querySelectorAll('.tile')];
+let activeIndex=null;
+function openCell(i){
+  activeIndex=i;
+  document.getElementById('modalEmoji').textContent=messages[i][0];
+  document.getElementById('modalTitle').textContent=(i+1)+'-ұяшық ашылды!';
+  document.getElementById('modalMessage').textContent=messages[i][1];
+  overlay.classList.add('show');
+  tiles[i].classList.add('opened');
+}
+function closeCell(){
+  overlay.classList.remove('show');
+  activeIndex=null;
+}
+tiles.forEach((tile,i)=>tile.addEventListener('click',()=>{
+  if(activeIndex===i && overlay.classList.contains('show')) closeCell();
+  else openCell(i);
+}));
+document.getElementById('closeX').addEventListener('click',closeCell);
+document.getElementById('closeBtn').addEventListener('click',closeCell);
+document.getElementById('reopenBtn').addEventListener('click',()=>{if(activeIndex!==null)openCell(activeIndex)});
+overlay.addEventListener('click',e=>{if(e.target===overlay)closeCell()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCell()});
+</script>
+</body>
+</html>
